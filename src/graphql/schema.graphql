@@ -1,0 +1,31 @@
+type User {
+  id: ID!
+  email: String!
+  name: String
+}
+
+type Repo {
+  id: ID!
+  owner: String!
+  url: String!
+  targetFile: [String!]!
+  person: [User!]!
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+
+  repos: [Repo!]!
+  repo(id: ID!): Repo
+}
+
+type Mutation {
+  createRepo(
+    id: String
+    url: String
+    owner: String
+    targetFile: [String]
+    person: [String]
+  ): Repo!
+}
