@@ -1,0 +1,68 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Person {
+  """ID of the Person"""
+  id: Int!
+  name: String!
+  email: String!
+  repoId: Int!
+  repo: GithubRepo!
+  githubRepo: GithubRepo!
+}
+
+type GithubRepo {
+  """ID of the GithubRepo"""
+  id: Int!
+
+  """
+  Name of the GithubRepo like "react-native"
+  """
+  name: String!
+
+  """Url of the GithubRepo"""
+  url: String!
+  subs: [Person!]
+}
+
+type Query {
+  findAllGithubRepos: [GithubRepo!]!
+  findOneGithubRepo(id: Int!): GithubRepo!
+  person(id: Int!): Person!
+}
+
+type Mutation {
+  createGithubRepo(createGithubRepoInput: CreateGithubRepoInput!): GithubRepo!
+  updateGithubRepo(updateGithubRepoInput: UpdateGithubRepoInput!): GithubRepo!
+  removeGithubRepo(id: Int!): GithubRepo!
+  createPerson(createPersonInput: CreatePersonInput!): Person!
+  updatePerson(updatePersonInput: UpdatePersonInput!): Person!
+  removePerson(id: Int!): Person!
+}
+
+input CreateGithubRepoInput {
+  name: String!
+  url: String!
+}
+
+input UpdateGithubRepoInput {
+  name: String
+  url: String
+  id: Int!
+}
+
+input CreatePersonInput {
+  """Name of Person"""
+  name: String!
+  email: String!
+  repoId: Int
+}
+
+input UpdatePersonInput {
+  """Name of Person"""
+  name: String
+  email: String
+  repoId: Int
+  id: Int!
+}
