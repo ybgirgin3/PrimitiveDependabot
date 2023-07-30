@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type GithubRepo {
+  id: Int!
+  url: String!
+  personId: Int!
+  person: [Person!]!
+}
+
+type Person {
+  id: Int!
+  email: String!
+  repo: GithubRepo
+}
+
+type Query {
+  getPersons: [Person!]!
+  getPerson(id: Int!): Person!
+  getRepos: [GithubRepo!]!
+  getRepo(id: Int!): GithubRepo!
+}
+
+type Mutation {
+  createPerson(createPersonInput: CreatePersonInput!): Person!
+  updatePerson(updatePersonInput: UpdatePersonInput!): Person!
+  removePerson(id: Int!): Person!
+  createRepo(createGithubRepoInput: CreateGithubRepoInput!): GithubRepo!
+  updateRepo(updateGithubRepoInput: UpdateGithubRepoInput!): GithubRepo!
+  removeRepo(id: Int!): GithubRepo!
+}
+
+input CreatePersonInput {
+  email: String!
+}
+
+input UpdatePersonInput {
+  email: String
+  id: Int!
+}
+
+input CreateGithubRepoInput {
+  url: String!
+  personId: Int!
+}
+
+input UpdateGithubRepoInput {
+  url: String
+  personId: Int
+  id: Int!
+}

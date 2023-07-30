@@ -1,5 +1,5 @@
 {
-  "name": "PrimitiveDependabot",
+  "name": "manytomany",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -20,14 +20,19 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/apollo": "^12.0.7",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/graphql": "^12.0.8",
-    "@nestjs/mongoose": "^10.0.1",
     "@nestjs/platform-express": "^10.0.0",
-    "mongoose": "^7.4.1",
+    "@nestjs/typeorm": "^10.0.0",
+    "apollo-server-express": "^3.12.0",
+    "graphql": "^16.7.1",
+    "graphql-tools": "^9.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "sqlite3": "^5.1.6",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
