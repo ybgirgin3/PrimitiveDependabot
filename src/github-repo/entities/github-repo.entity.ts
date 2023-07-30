@@ -1,12 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Person } from 'src/person/entities/person.entity';
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  OneToMany,
-  ManyToOne,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -17,7 +11,11 @@ export class GithubRepo {
 
   @Column()
   @Field()
-  url: string;
+  owner: string;
+
+  @Column()
+  @Field()
+  repoName: string;
 
   @Column()
   @Field(() => Int)

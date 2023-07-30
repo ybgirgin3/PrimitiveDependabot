@@ -8,6 +8,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { join } from 'path';
+import { ScraperService } from './scraper/scraper.service';
+import { ScrapeModule } from './scrape/scrape.module';
 
 @Module({
   imports: [
@@ -22,11 +24,11 @@ import { join } from 'path';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-
     PersonModule,
     GithubRepoModule,
+    ScrapeModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ScraperService],
 })
 export class AppModule {}
