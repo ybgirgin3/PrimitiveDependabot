@@ -18,6 +18,10 @@ export class GithubRepo {
   repoName: string;
 
   @Column()
+  @Field()
+  fileName: string;
+
+  @Column()
   @Field(() => Int)
   personId: number;
 

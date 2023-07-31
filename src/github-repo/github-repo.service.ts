@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { GithubRepo } from './entities/github-repo.entity';
 import { Repository } from 'typeorm';
 import { PersonService } from '../person/person.service';
+import { Person } from '../person/entities/person.entity';
 
 @Injectable()
 export class GithubRepoService {
@@ -13,18 +14,18 @@ export class GithubRepoService {
     private personService: PersonService,
   ) {}
 
-  create(createGithubRepoInput: CreateGithubRepoInput) {
+  create(createGithubRepoInput: CreateGithubRepoInput): Promise<GithubRepo> {
     // return 'This action adds a new githubRepo';
     const newRepo = this.gitRepo.create(createGithubRepoInput);
     return this.gitRepo.save(newRepo);
   }
 
-  findAll() {
+  findAll(): Promise<GithubRepo[]> {
     // return `This action returns all githubRepo`;
     return this.gitRepo.find();
   }
 
-  findOne(id: number) {
+  findOne(id: number): Promise<GithubRepo> {
     return this.gitRepo.findOneByOrFail({ id });
   }
 
@@ -36,7 +37,7 @@ export class GithubRepoService {
     return `This action removes a #${id} githubRepo`;
   }
 
-  async getPerson(personId: number) {
+  async getPerson(personId: number): Promise<Person[]> {
     return this.personService.findAll(personId);
   }
 }

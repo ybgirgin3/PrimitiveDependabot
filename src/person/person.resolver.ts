@@ -19,8 +19,8 @@ export class PersonResolver {
   }
 
   @Query(() => [Person])
-  getPersons() {
-    let filters = null;
+  getPersons(): Promise<Person[]> {
+    const filters = null;
     return this.personService.findAll(filters);
   }
 
@@ -40,10 +40,4 @@ export class PersonResolver {
   removePerson(@Args('id', { type: () => Int }) id: number) {
     return this.personService.remove(id);
   }
-
-  // foreign
-  // @ResolveField(() => GithubRepo)
-  // repo(@Parent() person: Person): Promise<GithubRepo> {
-  //   return this.personService.getRepo(person.repoId);
-  // }
 }

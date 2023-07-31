@@ -8,11 +8,11 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { join } from 'path';
-import { ScraperService } from './scraper/scraper.service';
-import { ScrapeModule } from './scrape/scrape.module';
+import { ScraperModule } from './scraper/scraper.module';
 
 @Module({
   imports: [
+    // ** CRUD Modules
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       driver: ApolloDriver,
@@ -24,11 +24,13 @@ import { ScrapeModule } from './scrape/scrape.module';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+
+    // ** user defined modules
     PersonModule,
     GithubRepoModule,
-    ScrapeModule,
+    ScraperModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ScraperService],
+  providers: [AppService],
 })
 export class AppModule {}

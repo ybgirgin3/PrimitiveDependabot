@@ -8,5 +8,6 @@ import { PersonModule } from '../person/person.module';
 @Module({
   imports: [TypeOrmModule.forFeature([GithubRepo]), PersonModule],
   providers: [GithubRepoResolver, GithubRepoService],
+  exports: [GithubRepoService],
 })
 export class GithubRepoModule {}

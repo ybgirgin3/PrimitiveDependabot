@@ -8,6 +8,9 @@ export class CreateGithubRepoInput {
   @Field()
   repoName: string;
 
+  @Field()
+  fileName: string;
+
   @Field(() => Int)
   personId: number;
 }

@@ -6,6 +6,7 @@ type GithubRepo {
   id: Int!
   owner: String!
   repoName: String!
+  fileName: String!
   personId: Int!
   person: [Person!]!
 }
@@ -44,12 +45,14 @@ input UpdatePersonInput {
 input CreateGithubRepoInput {
   owner: String!
   repoName: String!
+  fileName: String!
   personId: Int!
 }
 
 input UpdateGithubRepoInput {
   owner: String
   repoName: String
+  fileName: String
   personId: Int
   id: Int!
 }
